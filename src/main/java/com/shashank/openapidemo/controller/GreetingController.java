@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import com.shashank.openapidemo.annotation.HideInProduction;
 
 /**
  * Controller providing basic greeting endpoints
@@ -18,6 +19,7 @@ public class GreetingController {
 
     /**
      * Returns a hello message
+     * This endpoint's documentation is hidden in production environment
      * @return greeting message
      */
     @Operation(
@@ -32,6 +34,7 @@ public class GreetingController {
         }
     )
     @GetMapping("/hello")
+    @HideInProduction("Security sensitive endpoint hidden in production")
     public String sayHello() {
         return "Hello";
     }
